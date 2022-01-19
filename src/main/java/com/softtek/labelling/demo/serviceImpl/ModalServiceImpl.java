@@ -5,39 +5,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.softtek.labelling.demo.domain.Placas;
-import com.softtek.labelling.demo.repository.PlacasRepository;
-import com.softtek.labelling.demo.service.PlacasService;
+import com.softtek.labelling.demo.domain.Modal;
+import com.softtek.labelling.demo.repository.ModalRepository;
+import com.softtek.labelling.demo.service.ModalService;
 
 @Service
-public class PlacasServiceImpl implements PlacasService {
+public class ModalServiceImpl implements ModalService {
 	
 	@Autowired
-	PlacasRepository repository;
+	ModalRepository repository;
 
 	@Override
-	public List<Placas> obterTodos() {
+	public List<Modal> obterTodos() {
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
 
 	@Override
-	public Placas obter(Long id) {
+	public Modal obter(Long id) {
 		// TODO Auto-generated method stub
 		return repository.findById(id).get();
 	}
 
 	@Override
-	public void inserir(Placas placa) {
+	public void inserir(Modal modal) {
 		// TODO Auto-generated method stub
-		repository.save(placa);
+		repository.save(modal);
 		
 	}
 
 	@Override
-	public void atualizar(Placas placa) {
+	public void atualizar(Modal modal) {
 		// TODO Auto-generated method stub
-		repository.save(placa);
+		repository.save(modal);
 	}
 
 	@Override

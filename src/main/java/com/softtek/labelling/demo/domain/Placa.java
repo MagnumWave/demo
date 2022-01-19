@@ -12,9 +12,9 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="PLACAS")
+@Table(name="PLACA")
 @Data
-public class Placas {
+public class Placa {
 	
 	
 	@Id
@@ -23,10 +23,10 @@ public class Placas {
 	private Long id;
 	
 	@Column(name="MARK_NUMBER")
-	private String mark_number;
+	private String markNumber;
 	
 	@Column(name="CODIGO_SAP")
-	private Long codigo_sap;
+	private Long codigoSap;
 	
 	@Column(name="PESO")
 	private BigDecimal peso;

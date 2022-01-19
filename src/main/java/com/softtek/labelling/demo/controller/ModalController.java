@@ -12,34 +12,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.softtek.labelling.demo.domain.Placas;
-import com.softtek.labelling.demo.service.PlacasService;
+import com.softtek.labelling.demo.domain.Modal;
+import com.softtek.labelling.demo.service.ModalService;
 
 @RestController
-@RequestMapping("/placas")
-public class PlacasController {
+@RequestMapping("/modais")
+public class ModalController {
 	@Autowired
-	PlacasService service;
+	ModalService service;
 	
 	@GetMapping()
-	List<Placas> getAll(){
+	List<Modal> getAll(){
 		return service.obterTodos();
 	}
 	
 	@GetMapping("/{id}")
-	public Placas get(@PathVariable("id") Long id){
+	public Modal get(@PathVariable("id") Long id){
 		return service.obter(id);
 	}
 	
 	@PostMapping()
-	public void post(@RequestBody Placas placa) {
-		service.inserir(placa);
+	public void post(@RequestBody Modal modal) {
+		service.inserir(modal);
 	}
 	
 	@PutMapping("/{id}")
-	public void put(@PathVariable("id") Long id, @RequestBody Placas placa) {
-		placa.setId(id);
-		service.atualizar(placa);
+	public void put(@PathVariable("id") Long id, @RequestBody Modal modal) {
+		modal.setId(id);
+		service.atualizar(modal);
 	}
 	
 	@DeleteMapping("/{id}")

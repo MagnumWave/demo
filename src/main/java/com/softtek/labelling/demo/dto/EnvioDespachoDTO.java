@@ -10,7 +10,6 @@ import lombok.Data;
 @Data
 public class EnvioDespachoDTO {
 	private List<String> markNumbers;
-	@JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date data;
 	private Long modal_id;
 }

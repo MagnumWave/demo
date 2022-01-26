@@ -2,7 +2,10 @@ package com.softtek.labelling.demo.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,8 +35,21 @@ public class PlacaController {
 	}
 	
 	@PostMapping()
-	public void post(@RequestBody Placa placa) {
-		service.inserir(placa);
+	public ResponseEntity<Placa> post(@Valid @RequestBody Placa placa) {
+//		if (placa.getAltura()==null ||
+//			placa.getCodigoSap()==null ||
+//			placa.getEspessura()==null ||
+//			placa.getLargura()==null ||
+//			placa.getPeso()==null) {
+//			//retorna invalido
+//			return new ResponseEntity<Placa>(HttpStatus.BAD_REQUEST);
+//			
+//		} else {
+//			service.inserir(placa);
+//			return new ResponseEntity<Placa>(HttpStatus.OK);
+//		}
+		
+		return ResponseEntity.ok(null);
 	}
 	
 	@PutMapping("/{id}")

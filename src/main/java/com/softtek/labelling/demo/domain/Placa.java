@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -25,6 +26,7 @@ public class Placa {
 	@Column(name="MARK_NUMBER")
 	private String markNumber;
 	
+	@NotNull(message = "codigo sap obrigatório")
 	@Column(name="CODIGO_SAP")
 	private Long codigoSap;
 	

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ser.std.StdArraySerializers.LongArraySerializer;
 import com.softtek.labelling.demo.domain.Placa;
 import com.softtek.labelling.demo.repository.PlacaRepository;
 import com.softtek.labelling.demo.service.PlacaService;

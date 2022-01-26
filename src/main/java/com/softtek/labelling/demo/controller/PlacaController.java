@@ -1,6 +1,9 @@
 package com.softtek.labelling.demo.controller;
 
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +25,9 @@ public class PlacaController {
 	PlacaService service;
 	
 	@GetMapping()
-	List<Placa> getAll(){
-		return service.obterTodos();
+	List<Placa> getAll() throws Exception{
+		throw new SQLException();
+//		return service.obterTodos();
 	}
 	
 	@GetMapping("/{id}")
@@ -32,7 +36,7 @@ public class PlacaController {
 	}
 	
 	@PostMapping()
-	public void post(@RequestBody Placa placa) {
+	public void post(@Valid @RequestBody Placa placa) {
 		service.inserir(placa);
 	}
 	

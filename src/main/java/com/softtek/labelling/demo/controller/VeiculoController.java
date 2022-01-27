@@ -2,8 +2,6 @@ package com.softtek.labelling.demo.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,42 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.softtek.labelling.demo.domain.Placa;
-import com.softtek.labelling.demo.handler.CustomException;
-import com.softtek.labelling.demo.service.PlacaService;
+import com.softtek.labelling.demo.domain.Veiculo;
+import com.softtek.labelling.demo.service.VeiculoService;
 
 @RestController
-@RequestMapping("/placas")
-public class PlacaController {
+@RequestMapping("/veiculos")
+public class VeiculoController {
 	@Autowired
-	PlacaService service;
+	VeiculoService service;
 	
 	@GetMapping()
-	public List<Placa> getAll() throws Exception{
+	List<Veiculo> getAll(){
 		return service.obterTodos();
 	}
 	
 	@GetMapping("/{id}")
-	public Placa get(@PathVariable("id") Long id) throws CustomException{
+	public Veiculo get(@PathVariable("id") Long id){
 		return service.obter(id);
 	}
 	
 	@PostMapping()
-	public void post(@Valid @RequestBody Placa placa) throws CustomException {
-//		throw new SQLException();
-		service.inserir(placa);
+	public void post(@RequestBody Veiculo veiculo) {
+		service.inserir(veiculo);
 	}
 	
 	@PutMapping("/{id}")
-	public void put(@PathVariable("id") Long id, @Valid @RequestBody Placa placa) throws CustomException {
-		placa.setId(id);
-		service.atualizar(placa);
-		 
-		
+	public void put(@PathVariable("id") Long id, @RequestBody Veiculo veiculo) {
+		veiculo.setId(id);
+		service.atualizar(veiculo);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Long id) throws CustomException {
+	public void delete(@PathVariable("id") Long id) {
 		service.remover(id);
 	}
 

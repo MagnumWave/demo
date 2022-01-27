@@ -1,11 +1,13 @@
 package com.softtek.labelling.demo.serviceImpl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.softtek.labelling.demo.domain.Placa;
+import com.softtek.labelling.demo.handler.CustomException;
 import com.softtek.labelling.demo.repository.PlacaRepository;
 import com.softtek.labelling.demo.service.PlacaService;
 
@@ -22,13 +24,20 @@ public class PlacaServiceImpl implements PlacaService {
 	}
 
 	@Override
-	public Placa obter(Long id) {
+	public Placa obter(Long id) throws CustomException {
 		// TODO Auto-generated method stub
-		return repository.findById(id).get();
+		try {
+			Placa placaTemp = repository.findById(id).get();
+			return placaTemp;
+		} catch (NoSuchElementException e) {
+			// TODO: handle exception
+			throw new CustomException("Este ID não existe!");
+		}
+		
 	}
 
 	@Override
-	public void inserir(Placa placa) {
+	public void inserir(Placa placa) throws CustomException {
 		// TODO Auto-generated method stub
 		//id do cara anterior
 		Long ultimoID = this.obterUltimoID();
@@ -54,15 +63,32 @@ public class PlacaServiceImpl implements PlacaService {
 	}
 
 	@Override
-	public void atualizar(Placa placa) {
+	public void atualizar(Placa placa) throws CustomException {
 		// TODO Auto-generated method stub
-		repository.save(placa);
+		try {
+			Long idTemp = placa.getId();
+			repository.findById(idTemp).get();
+			//a linha acima é a testada
+			repository.save(placa);
+		} catch (NoSuchElementException e) {
+			// TODO: handle exception
+			throw new CustomException("Este ID não existe!");
+		}
+		
 	}
 
 	@Override
-	public void remover(Long id) {
+	public void remover(Long id) throws CustomException {
 		// TODO Auto-generated method stub
-		repository.deleteById(id);
+		try {
+			repository.findById(id).get();
+			//a linha acima é a testada
+			repository.deleteById(id);
+		} catch (NoSuchElementException e) {
+			// TODO: handle exception
+			throw new CustomException("Este ID não existe!");
+		}
+		
 	}
 
 	@Override
